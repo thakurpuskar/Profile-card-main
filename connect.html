@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Puskar Kumar Thakur — Portfolio</title>
+  <meta name="description" content="Portfolio of Puskar Kumar Thakur — skills, certificates, and projects." />
+  <link rel="icon" href="./assests/logo.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..800;1,9..144,500..700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0B0E14;
+      --surface: #12161F;
+      --surface-2: #171C27;
+      --surface-3: #1D2330;
+      --text: #E9EBF1;
+      --text-muted: #8A92A6;
+      --border: rgba(255, 255, 255, 0.09);
+      --crimson: #E8435C;
+      --gold: #F2B705;
+      --shadow: 0 24px 60px -30px rgba(0, 0, 0, 0.6);
+    }
+
+    html[data-theme="light"] {
+      --bg: #F5F3EE;
+      --surface: #FFFFFF;
+      --surface-2: #EFECE4;
+      --surface-3: #E7E2D6;
+      --text: #1B1E27;
+      --text-muted: #666B7A;
+      --border: rgba(20, 20, 20, 0.09);
+      --shadow: 0 24px 55px -30px rgba(30, 20, 10, 0.3);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'IBM Plex Sans', sans-serif;
+      transition: background .4s ease, color .4s ease;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .wrap {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: 'Fraunces', serif;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .eyebrow {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .75rem;
+      color: var(--crimson);
+      margin: 0 0 10px;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(10px);
+      background: color-mix(in srgb, var(--bg) 80%, transparent);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .9rem;
+      text-decoration: none;
+    }
+
+    .brand .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--crimson);
+    }
+
+    nav.links {
+      display: flex;
+      gap: 22px;
+      font-size: .88rem;
+    }
+
+    nav.links a {
+      text-decoration: none;
+      color: var(--text-muted);
+      transition: color .2s ease;
+    }
+
+    nav.links a:hover {
+      color: var(--text);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .icon-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .icon-btn:hover {
+      border-color: var(--crimson);
+      color: var(--crimson);
+    }
+
+    #navToggle {
+      display: none;
+    }
+
+    @media (max-width:720px) {
+      nav.links {
+        display: none;
+      }
+
+      #navToggle {
+        display: flex;
+      }
+    }
+
+    .hero {
+      padding: 64px 0 40px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 28px;
+      align-items: end;
+    }
+
+    @media (max-width:640px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 2.9rem);
+      line-height: 1.08;
+    }
+
+    .hero p {
+      color: var(--text-muted);
+      max-width: 52ch;
+      margin-top: 14px;
+      font-size: 1.02rem;
+      line-height: 1.6;
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 14px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .78rem;
+      color: var(--text-muted);
+    }
+
+    .hero-meta span {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-meta i {
+      color: var(--gold);
+    }
+
+    section {
+      padding: 52px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .skill-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 12px;
+      margin-top: 26px;
+    }
+
+    .skill {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text);
+      transition: transform .2s ease, border-color .2s ease;
+    }
+
+    .skill:hover {
+      transform: translateY(-4px);
+      border-color: var(--crimson);
+    }
+
+    .skill i {
+      font-size: 1.5rem;
+      color: var(--crimson);
+    }
+
+    .skill span {
+      font-size: .78rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    .ach-text {
+      color: var(--text-muted);
+      max-width: 64ch;
+      line-height: 1.6;
+      margin-top: 14px;
+    }
+
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .cert-card {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      background: var(--surface);
+      cursor: pointer;
+    }
+
+    .cert-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      display: block;
+      transition: transform .3s ease;
+    }
+
+    .cert-card:hover img {
+      transform: scale(1.04);
+    }
+
+    .cert-card .cap {
+      padding: 10px 12px;
+      font-size: .8rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+    }
+
+    .cert-links {
+      margin-top: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .cert-links a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      font-size: .9rem;
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--surface);
+      transition: border-color .2s ease, color .2s ease;
+    }
+
+    .cert-links a:hover {
+      border-color: var(--crimson);
+      color: var(--crimson);
+    }
+
+    .cert-links i {
+      color: var(--gold);
+    }
+
+    .quote {
+      margin-top: 30px;
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      border-left: 3px solid var(--crimson);
+      padding-left: 16px;
+    }
+
+    .filters {
+      display: flex;
+      gap: 10px;
+      margin: 22px 0 6px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .78rem;
+      padding: 8px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all .2s ease;
+    }
+
+    .filter-btn.active,
+    .filter-btn:hover {
+      background: var(--crimson);
+      border-color: var(--crimson);
+      color: #fff;
+    }
+
+    .proj-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .proj-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform .2s ease, border-color .2s ease;
+    }
+
+    .proj-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--crimson);
+    }
+
+    .proj-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .proj-body {
+      padding: 16px;
+    }
+
+    .proj-body h4 {
+      font-size: 1.05rem;
+      margin-bottom: 6px;
+    }
+
+    .proj-body p {
+      font-size: .85rem;
+      color: var(--text-muted);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .proj-tag {
+      display: inline-block;
+      margin-top: 10px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .68rem;
+      color: var(--gold);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .contact-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      padding: 22px 14px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: var(--surface);
+      text-decoration: none;
+      color: var(--text);
+      transition: transform .2s ease, border-color .2s ease;
+    }
+
+    .contact-item:hover {
+      transform: translateY(-4px);
+      border-color: var(--crimson);
+    }
+
+    .contact-item i {
+      font-size: 1.3rem;
+      color: var(--crimson);
+    }
+
+    .contact-item span {
+      font-size: .8rem;
+      color: var(--text-muted);
+    }
+
+    .resume-btn {
+      margin-top: 26px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      padding: 15px 26px;
+      border-radius: 12px;
+      font-weight: 600;
+      background: linear-gradient(120deg, var(--gold), #d99e00);
+      color: #151515;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .resume-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px -14px rgba(242, 183, 5, 0.6);
+    }
+
+    footer {
+      padding: 30px 0 50px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: .8rem;
+      font-family: 'IBM Plex Mono', monospace;
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, .75);
+      z-index: 50;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .lightbox.open {
+      display: flex;
+    }
+
+    .lightbox img {
+      max-height: 85vh;
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+    }
+
+    .lightbox .close {
+      position: absolute;
+      top: 22px;
+      right: 26px;
+      font-size: 1.8rem;
+      color: #fff;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .modal-panel {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, .7);
+      z-index: 50;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .modal-panel.open {
+      display: flex;
+    }
+
+    .modal-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      max-width: 420px;
+      width: 100%;
+      padding: 24px;
+      position: relative;
+    }
+
+    .modal-card .close {
+      position: absolute;
+      top: 12px;
+      right: 16px;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+
+    .modal-card img {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 14px;
+    }
+
+    .modal-card h3 {
+      margin-bottom: 8px;
+    }
+
+    .modal-card p {
+      color: var(--text-muted);
+      font-size: .9rem;
+      line-height: 1.55;
+      margin-bottom: 16px;
+    }
+
+    .modal-links {
+      display: flex;
+      justify-content: space-between;
+      font-size: .85rem;
+    }
+
+    .modal-links a {
+      text-decoration: underline;
+      color: var(--crimson);
+    }
+
+    ::selection {
+      background: var(--crimson);
+      color: #fff;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--crimson);
+      outline-offset: 2px;
+    }
+  </style>
+</head>
+
+<body data-theme="dark">
+  <header>
+    <div class="wrap nav-inner">
+      <a class="brand" href="./index.html"><span class="dot"></span> puskar.thakur</a>
+      <nav class="links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#achievements">Achievements</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="icon-btn" id="themeToggle" aria-label="Toggle theme" title="Toggle theme"><i
+            class="fa-solid fa-moon" id="themeIcon"></i></button>
+        <a class="icon-btn" href="./index.html" title="Back to profile card" aria-label="Back to profile card"><i
+            class="fa-solid fa-arrow-left"></i></a>
+      </div>
+    </div>
+  </header>
+  <main class="wrap">
+    <section class="hero" id="about" style="border-top:none;">
+      <div>
+        <p class="eyebrow">Portfolio</p>
+        <h1>Hi, I'm Puskar Kumar Thakur.</h1>
+        <p>I'm a student with a passion for IT — exploring new technologies and building projects that make a small dent
+          in the world, one commit at a time.</p>
+        <div class="hero-meta" style="margin-top:22px;">
+          <span><i class="fa-solid fa-location-dot"></i> Nepal</span>
+          <span><i class="fa-solid fa-graduation-cap"></i> IT Student</span>
+          <span><i class="fa-solid fa-code"></i> Open to collaborations</span>
+        </div>
+      </div>
+    </section>
+    <section id="skills">
+      <p class="eyebrow">What I work with</p>
+      <h2>Skills</h2>
+      <div class="skill-grid">
+        <a class="skill" href="https://www.freecodecamp.org/certification/puskarthakur14/responsive-web-design"
+          target="_blank" rel="noopener">
+          <i class="fa-brands fa-html5"></i><span>HTML5</span>
+        </a>
+        <a class="skill" href="https://www.freecodecamp.org/certification/puskarthakur14/responsive-web-design"
+          target="_blank" rel="noopener">
+          <i class="fa-brands fa-css3-alt"></i><span>CSS3</span>
+        </a>
+        <a class="skill" href="./certificate/DigitalPathshala Certificate (50).pdf" target="_blank" rel="noopener">
+          <i class="fa-brands fa-js"></i><span>JavaScript</span>
+        </a>
+        <a class="skill" href="./certificate/DigitalPathshala Certificate (74).pdf" target="_blank" rel="noopener">
+          <i class="fa-brands fa-square-js"></i><span>TypeScript</span>
+        </a>
+        <a class="skill" href="./certificate/DigitalPathshala Certificate (50).pdf" target="_blank" rel="noopener">
+          <i class="fa-brands fa-git-alt"></i><span>Git</span>
+        </a>
+        <a class="skill" href="https://github.com/thakurpuskar" target="_blank" rel="noopener">
+          <i class="fa-brands fa-github"></i><span>GitHub</span>
+        </a>
+        <a class="skill" href="certificate/Flutter A Hands on Workshop on Mobile App Development.jpg" target="_blank"
+          rel="noopener">
+          <i class="fa-brands fa-dart-lang"></i><span>Dart</span>
+        </a>
+        <a class="skill" href="https://tailwindcss.com" target="_blank" rel="noopener">
+          <i class="fa-solid fa-wind"></i><span>Tailwind CSS</span>
+        </a>
+      </div>
+    </section>
+    <section id="achievements">
+      <p class="eyebrow">Along the way</p>
+      <h2>Achievements</h2>
+      <p class="ach-text">I've taken part in a handful of coding competitions, freeCodeCamp challenges, workshops, and
+        hackathons — sharpening my skills each time. My journey in tech is just beginning, and I'm excited about what's
+        next.</p>
+      <div class="cert-grid" id="certGrid">
+        <div class="cert-card" onclick="openLightbox('certificate/Coders Hustle 1.0.jpg')">
+          <img src="./certificate/Coders Hustle 1.0.jpg" alt="Coder's Hustle 1.0 certificate" />
+          <div class="cap">Coder's Hustle 1.0 — Hackathon</div>
+        </div>
+        <div class="cert-card"
+          onclick="openLightbox('certificate/Flutter A Hands on Workshop on Mobile App Development.jpg')">
+          <img src="./certificate/Flutter A Hands on Workshop on Mobile App Development.jpg"
+            alt="Flutter workshop certificate" />
+          <div class="cap">Flutter — Mobile App Development Workshop</div>
+        </div>
+      </div>
+      <div class="cert-links">
+        <a href="https://www.freecodecamp.org/certification/puskarthakur14/responsive-web-design" target="_blank"
+          rel="noopener"><i class="fa-solid fa-file-lines"></i> Responsive Web Design — freeCodeCamp</a>
+        <a href="./certificate/DigitalPathshala Certificate (50).pdf" target="_blank"><i
+            class="fa-solid fa-file-lines"></i> Git and GitHub — DigitalPathshala</a>
+        <a href="./certificate/DigitalPathshala Certificate (74).pdf" target="_blank"><i
+            class="fa-solid fa-file-lines"></i> TypeScript — DigitalPathshala</a>
+      </div>
+      <p class="quote">"Every expert was once a beginner."</p>
+    </section>
+    <section id="projects">
+      <p class="eyebrow">Recent work</p>
+      <h2>Projects</h2>
+      <div class="filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="web">Web</button>
+        <button class="filter-btn" data-filter="mobile">Mobile</button>
+      </div>
+      <div class="proj-grid" id="projGrid">
+        <article class="proj-card" data-cat="web" onclick="openProject(this)"
+          data-img="./assests/Project screenshot/my college.png" data-title="My College Website"
+          data-desc="Built during the Coder's Hustle 1.0 hackathon."
+          data-git="https://github.com/thakurpuskar/Coder-s-_Hustle_1.0_Myself"
+          data-live="https://cctthakur.vercel.app/">
+          <img src="./assests/Project screenshot/my college.png" alt="My College Website screenshot" />
+          <div class="proj-body">
+            <h4>My College Website</h4>
+            <p>Built during the Coder's Hustle 1.0 hackathon.</p>
+            <span class="proj-tag">Web</span>
+          </div>
+        </article>
+        <article class="proj-card" data-cat="web" onclick="openProject(this)"
+          data-img="./assests/Project screenshot/bit batch 2081.png" data-title="BIT Batch 2081 Website"
+          data-desc="Inspired by a tutorial, customized with my own enhancements."
+          data-git="https://github.com/thakurpuskar/BIT-Batch-2081" data-live="https://bit-batch-2081.vercel.app/">
+          <img src="./assests/Project screenshot/bit batch 2081.png" alt="BIT Batch 2081 website screenshot" />
+          <div class="proj-body">
+            <h4>BIT Batch 2081 Website</h4>
+            <p>Inspired by a tutorial, customized with my own enhancements.</p>
+            <span class="proj-tag">Web</span>
+          </div>
+        </article>
+        <article class="proj-card" data-cat="mobile" onclick="openProject(this)"
+          data-img="./assests/Project screenshot/profile card.png" data-title="Profile Card"
+          data-desc="A simple profile card showcasing my skills and projects."
+          data-git="https://github.com/thakurpuskar/Profile-card" data-live="https://puskarthakur.vercel.app/">
+          <img src="./assests/Project screenshot/profile card.png" alt="Profile card screenshot" />
+          <div class="proj-body">
+            <h4>Profile Card</h4>
+            <p>A simple profile card showcasing my skills and projects.</p>
+            <span class="proj-tag">Mobile</span>
+          </div>
+        </article>
+      </div>
+    </section>
+    <section id="contact">
+      <p class="eyebrow">Get in touch</p>
+      <h2>Let's connect</h2>
+      <div class="contact-grid">
+        <a class="contact-item" href="mailto:puskarkumarthakur14@gmail.com"><i
+            class="fa-solid fa-envelope"></i><span>Email</span></a>
+        <a class="contact-item" href="https://m.me/puskar.kumar.thakur" target="_blank" rel="noopener"><i
+            class="fa-brands fa-facebook-messenger"></i><span>Messenger</span></a>
+        <a class="contact-item" href="tel:+9779767715499"><i class="fa-solid fa-phone"></i><span>Call</span></a>
+        <a class="contact-item" href="https://t.me/+9779767715499" target="_blank" rel="noopener"><i
+            class="fa-brands fa-telegram"></i><span>Telegram</span></a>
+        <a class="contact-item" href="https://wa.me/+9779767715499" target="_blank" rel="noopener"><i
+            class="fa-brands fa-whatsapp"></i><span>WhatsApp</span></a>
+      </div>
+      <a class="resume-btn" href="./certificate/Blue Simple Professional CV Resume.pdf" download>
+        <i class="fa-solid fa-arrow-down"></i> Download resume
+      </a>
+    </section>
+  </main>
+  <footer>Built by Puskar Kumar Thakur · Kathmandu, Nepal</footer>
+  <div class="lightbox" id="lightbox">
+    <button class="close" id="lightboxClose" aria-label="Close">&times;</button>
+    <img id="lightboxImg" src="" alt="Certificate preview" />
+  </div>
+  <div class="modal-panel" id="projModal">
+    <div class="modal-card">
+      <button class="close" id="projClose" aria-label="Close">&times;</button>
+      <img id="pmImg" src="" alt="" />
+      <h3 id="pmTitle"></h3>
+      <p id="pmDesc"></p>
+      <div class="modal-links">
+        <a id="pmGit" href="#" target="_blank" rel="noopener">GitHub</a>
+        <a id="pmLive" href="#" target="_blank" rel="noopener">Live site</a>
+      </div>
+    </div>
+  </div>
+  <script>
+    const root = document.documentElement;
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    function applyTheme(t) {
+      root.setAttribute('data-theme', t);
+      themeIcon.className = t === 'light' ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+      localStorage.setItem('pkt-theme', t);
+    }
+    applyTheme(localStorage.getItem('pkt-theme') || 'dark');
+    themeToggle.addEventListener('click', () => applyTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'));
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    function openLightbox(src) { lightboxImg.src = src; lightbox.classList.add('open'); }
+    function closeLightbox() { lightbox.classList.remove('open'); }
+    document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+    const projModal = document.getElementById('projModal');
+    function openProject(card) {
+      document.getElementById('pmImg').src = card.dataset.img;
+      document.getElementById('pmTitle').textContent = card.dataset.title;
+      document.getElementById('pmDesc').textContent = card.dataset.desc;
+      document.getElementById('pmGit').href = card.dataset.git;
+      document.getElementById('pmLive').href = card.dataset.live;
+      projModal.classList.add('open');
+    }
+    function closeProject() { projModal.classList.remove('open'); }
+    document.getElementById('projClose').addEventListener('click', closeProject);
+    projModal.addEventListener('click', e => { if (e.target === projModal) closeProject(); });
+
+    document.addEventListener('keydown', e => {
+      if (e.key !== 'Escape') return;
+      closeLightbox(); closeProject();
+    });
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const f = btn.dataset.filter;
+        document.querySelectorAll('.proj-card').forEach(card => {
+          card.style.display = (f === 'all' || card.dataset.cat === f) ? '' : 'none';
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>

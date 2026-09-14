@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Puskar Kumar Thakur — Web Developer</title>
+  <meta name="description"
+    content="Puskar Kumar Thakur, web developer and IT student from Nepal. Building responsive, user-friendly digital experiences." />
+  <link rel="icon" href="./assests/logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..800;1,9..144,500..700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0B0E14;
+      --surface: #12161F;
+      --surface-2: #171C27;
+      --text: #E9EBF1;
+      --text-muted: #8A92A6;
+      --border: rgba(255, 255, 255, 0.08);
+      --crimson: #E8435C;
+      --crimson-dim: #7A2536;
+      --gold: #F2B705;
+      --shadow: 0 30px 80px -30px rgba(0, 0, 0, 0.65);
+    }
+
+    html[data-theme="light"] {
+      --bg: #F5F3EE;
+      --surface: #FFFFFF;
+      --surface-2: #EFECE4;
+      --text: #1B1E27;
+      --text-muted: #666B7A;
+      --border: rgba(20, 20, 20, 0.08);
+      --shadow: 0 30px 70px -35px rgba(30, 20, 10, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'IBM Plex Sans', sans-serif;
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 20px;
+      position: relative;
+      overflow-x: hidden;
+      transition: background .4s ease, color .4s ease;
+    }
+
+    .field {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(600px 400px at 12% 8%, rgba(232, 67, 92, 0.16), transparent 60%),
+        radial-gradient(500px 380px at 88% 92%, rgba(242, 183, 5, 0.10), transparent 60%);
+    }
+
+    .stage {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 920px;
+    }
+
+    .theme-toggle {
+      position: fixed;
+      top: 22px;
+      right: 22px;
+      z-index: 20;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 15px;
+      transition: transform .25s ease, border-color .25s ease;
+    }
+
+    .theme-toggle:hover {
+      transform: translateY(-2px);
+      border-color: var(--crimson);
+    }
+
+    .theme-toggle:focus-visible {
+      outline: 2px solid var(--crimson);
+      outline-offset: 3px;
+    }
+
+    .card {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 0;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    @media (max-width:760px) {
+      .card {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .identity {
+      padding: 40px 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 18px;
+      background: var(--surface-2);
+      border-right: 1px solid var(--border);
+    }
+
+    @media (max-width:760px) {
+      .identity {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+      }
+    }
+
+    .avatar-ring {
+      width: 132px;
+      height: 132px;
+      border-radius: 50%;
+      padding: 4px;
+      background: conic-gradient(from 220deg, var(--crimson), var(--gold), var(--crimson));
+      cursor: pointer;
+    }
+
+    .avatar-ring img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      border: 3px solid var(--surface-2);
+    }
+
+    .name {
+      font-family: 'Fraunces', serif;
+      font-weight: 700;
+      font-size: 1.6rem;
+      line-height: 1.15;
+      margin: 0;
+    }
+
+    .role-line {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .82rem;
+      color: var(--crimson);
+      min-height: 1.2em;
+    }
+
+    .role-line .cursor {
+      display: inline-block;
+      width: 7px;
+      background: var(--crimson);
+      margin-left: 2px;
+      animation: blink 1s steps(1) infinite;
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .role-line .cursor {
+        animation: none;
+      }
+    }
+
+    .bio {
+      font-size: .92rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+      max-width: 32ch;
+    }
+
+    .socials {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .socials a {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      transition: transform .2s ease, border-color .2s ease, color .2s ease;
+      font-size: .95rem;
+    }
+
+    .socials a:hover {
+      transform: translateY(-3px);
+      border-color: var(--crimson);
+      color: var(--crimson);
+    }
+
+    .socials a:focus-visible {
+      outline: 2px solid var(--crimson);
+      outline-offset: 2px;
+    }
+
+    .console {
+      padding: 32px 32px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    .term {
+      background: #0A0D13;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    html[data-theme="light"] .term {
+      background: #171B24;
+    }
+
+    .term-bar {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 10px 14px;
+      background: rgba(255, 255, 255, 0.03);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .term-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+    }
+
+    .term-dot.r {
+      background: #E8435C;
+    }
+
+    .term-dot.y {
+      background: #F2B705;
+    }
+
+    .term-dot.g {
+      background: #3DDC84;
+    }
+
+    .term-title {
+      margin-left: 8px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .72rem;
+      color: #8A92A6;
+    }
+
+    .term-body {
+      padding: 18px 18px 20px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .85rem;
+      line-height: 1.9;
+      color: #D7DCE6;
+      min-height: 150px;
+    }
+
+    .term-body .prompt {
+      color: #3DDC84;
+    }
+
+    .term-body .out {
+      color: #F2B705;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .stat {
+      background: var(--surface);
+      padding: 16px 10px;
+      text-align: center;
+    }
+
+    .stat b {
+      display: block;
+      font-family: 'Fraunces', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .stat span {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .68rem;
+      color: var(--text-muted);
+    }
+
+    .cta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 16px 18px;
+      border-radius: 12px;
+      background: linear-gradient(120deg, var(--crimson), #c9324a);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px -12px rgba(232, 67, 92, 0.55);
+    }
+
+    .cta:focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 3px;
+    }
+
+    .cta i {
+      transition: transform .2s ease;
+    }
+
+    .cta:hover i {
+      transform: translateX(3px);
+    }
+
+    #profileModal {
+      position: fixed;
+      inset: 0;
+      z-index: 40;
+      background: rgba(0, 0, 0, .55);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    #profileModal.open {
+      display: flex;
+    }
+
+    .modal-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 26px;
+      max-width: 340px;
+      width: 100%;
+      text-align: center;
+      transform: scale(.95);
+      opacity: 0;
+      transition: all .25s ease;
+      position: relative;
+    }
+
+    .modal-box.in {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 10px;
+      right: 14px;
+      background: none;
+      border: none;
+      font-size: 1.4rem;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+
+    .modal-close:hover {
+      color: var(--crimson);
+    }
+
+    .modal-box img {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 14px;
+      border: 3px solid var(--crimson);
+      display: block;
+    }
+
+    .modal-box h2 {
+      font-family: 'Fraunces', serif;
+      margin: 0 0 4px;
+    }
+
+    .modal-box p.role {
+      color: var(--text-muted);
+      font-size: .85rem;
+      margin: 0 0 12px;
+    }
+
+    .modal-box p.desc {
+      font-size: .9rem;
+      line-height: 1.55;
+      margin: 0;
+    }
+  </style>
+</head>
+
+<body data-theme="dark">
+  <div class="field" aria-hidden="true"></div>
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle light and dark theme" title="Toggle theme">
+    <i class="fa-solid fa-moon" id="themeIcon"></i>
+  </button>
+  <div id="profileModal" role="dialog" aria-modal="true" aria-labelledby="modalName">
+    <div class="modal-box" id="modalBox">
+      <button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
+      <img src="./assests/profile.jpg" alt="Puskar Kumar Thakur" />
+      <h2 id="modalName">Puskar Kumar Thakur</h2>
+      <p class="role">Web Developer · UI Designer · Tech Enthusiast</p>
+      <p class="desc">Based in Nepal. I build responsive websites and enjoy turning ideas into user-friendly digital
+        experiences.</p>
+    </div>
+  </div>
+  <main class="stage">
+    <div class="card">
+      <section class="identity">
+        <div class="avatar-ring" id="avatarBtn" role="button" tabindex="0" aria-label="View profile details">
+          <img src="./assests/profile.jpg" alt="Puskar Kumar Thakur" />
+        </div>
+        <div>
+          <h1 class="name">Puskar Kumar Thakur</h1>
+          <p class="role-line" id="roleLine" aria-hidden="true"></p>
+        </div>
+        <p class="bio">IT student from Nepal, building responsive websites and exploring new technology, one project at
+          a time.</p>
+        <nav class="socials" aria-label="Social profiles">
+          <a href="https://www.facebook.com/profile.php?id=61555665540439" target="_blank" rel="noopener"
+            title="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://github.com/thakurpuskar" target="_blank" rel="noopener" title="GitHub"><i
+              class="fab fa-github"></i></a>
+          <a href="https://www.instagram.com/puskarthakur14/" target="_blank" rel="noopener" title="Instagram"><i
+              class="fab fa-instagram"></i></a>
+          <a href="https://www.linkedin.com/in/puskar-kumar-thakur-114775324/" target="_blank" rel="noopener"
+            title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://x.com/KumarPuskar14" target="_blank" rel="noopener" title="X (Twitter)"><i
+              class="fab fa-x-twitter"></i></a>
+          <a href="https://www.tiktok.com/@puskarthakur14" target="_blank" rel="noopener" title="TikTok"><i
+              class="fab fa-tiktok"></i></a>
+        </nav>
+      </section>
+      <section class="console">
+        <div class="term">
+          <div class="term-bar">
+            <span class="term-dot r"></span><span class="term-dot y"></span><span class="term-dot g"></span>
+            <span class="term-title">puskar@portfolio ~ %</span>
+          </div>
+          <div class="term-body" id="termBody"></div>
+        </div>
+        <div class="stats">
+          <div class="stat"><b id="c1">0</b><span>Projects</span></div>
+          <div class="stat"><b id="c2">0</b><span>Followers</span></div>
+          <div class="stat"><b id="c3">0</b><span>Following</span></div>
+        </div>
+        <a class="cta" href="./connect.html">
+          <span>View full portfolio</span>
+          <i class="fa-solid fa-arrow-right-long"></i>
+        </a>
+      </section>
+    </div>
+  </main>
+  <script>
+    const root = document.documentElement;
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    function applyTheme(t) {
+      root.setAttribute('data-theme', t);
+      themeIcon.className = t === 'light' ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+      localStorage.setItem('pkt-theme', t);
+    }
+    applyTheme(localStorage.getItem('pkt-theme') || 'dark');
+    themeToggle.addEventListener('click', () => {
+      applyTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+    });
+    const modal = document.getElementById('profileModal');
+    const modalBox = document.getElementById('modalBox');
+    const avatarBtn = document.getElementById('avatarBtn');
+    function openModal() {
+      modal.classList.add('open');
+      requestAnimationFrame(() => modalBox.classList.add('in'));
+      document.getElementById('modalClose').focus();
+    }
+    function closeModal() {
+      modalBox.classList.remove('in');
+      setTimeout(() => modal.classList.remove('open'), 200);
+    }
+    avatarBtn.addEventListener('click', openModal);
+    avatarBtn.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(); } });
+    document.getElementById('modalClose').addEventListener('click', closeModal);
+    modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('open')) closeModal(); });
+    function animateCounter(id, end, duration = 1400) {
+      const el = document.getElementById(id);
+      const start = performance.now();
+      function tick(now) {
+        const p = Math.min((now - start) / duration, 1);
+        el.textContent = Math.floor(p * end);
+        if (p < 1) requestAnimationFrame(tick); else el.textContent = end;
+      }
+      requestAnimationFrame(tick);
+    }
+    const lines = [
+      { prompt: 'whoami', out: 'Puskar Kumar Thakur' },
+      { prompt: 'role --current', out: 'Web Developer, UI Designer, Tech Enthusiast' },
+      { prompt: 'location', out: 'Nepal 🇳🇵' },
+      { prompt: 'status', out: 'Open to internships & collaborations' }
+    ];
+    const termBody = document.getElementById('termBody');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function renderStatic() {
+      termBody.innerHTML = lines.map(l => `<div><span class="prompt">$</span> ${l.prompt}<br><span class="out">></span> ${l.out}</div>`).join('');
+    }
+    async function typeLine(promptText, outText, row) {
+      const promptEl = document.createElement('div');
+      const p = document.createElement('span'); p.className = 'prompt'; p.textContent = '$ ';
+      const pt = document.createElement('span'); promptEl.append(p, pt);
+      row.appendChild(promptEl);
+      for (const ch of promptText) { pt.textContent += ch; await new Promise(r => setTimeout(r, 28)); }
+      const outEl = document.createElement('div');
+      const o = document.createElement('span'); o.className = 'out'; o.textContent = '> ';
+      const ot = document.createElement('span'); outEl.append(o, ot);
+      row.appendChild(outEl);
+      await new Promise(r => setTimeout(r, 150));
+      for (const ch of outText) { ot.textContent += ch; await new Promise(r => setTimeout(r, 14)); }
+    }
+    async function runTerminal() {
+      if (reduceMotion) { renderStatic(); return; }
+      for (const l of lines) {
+        const row = document.createElement('div');
+        termBody.appendChild(row);
+        await typeLine(l.prompt, l.out, row);
+        await new Promise(r => setTimeout(r, 260));
+      }
+    }
+    const roles = ["Web Developer", "UI Designer", "Tech Enthusiast"];
+    const roleLine = document.getElementById('roleLine');
+    let ri = 0, ci = 0, deleting = false;
+    function roleTick() {
+      if (reduceMotion) { roleLine.textContent = roles[0]; return; }
+      const word = roles[ri];
+      roleLine.innerHTML = word.substring(0, ci) + '<span class="cursor"></span>';
+      if (!deleting && ci < word.length) { ci++; setTimeout(roleTick, 90); }
+      else if (!deleting && ci === word.length) { deleting = true; setTimeout(roleTick, 1300); }
+      else if (deleting && ci > 0) { ci--; setTimeout(roleTick, 45); }
+      else { deleting = false; ri = (ri + 1) % roles.length; setTimeout(roleTick, 250); }
+    }
+    window.addEventListener('DOMContentLoaded', () => {
+      animateCounter('c1', 29);
+      animateCounter('c2', 951);
+      animateCounter('c3', 530);
+      runTerminal();
+      roleTick();
+    });
+  </script>
+</body>
+
+</html>
