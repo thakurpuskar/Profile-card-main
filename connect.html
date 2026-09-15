@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Puskar Kumar Thakur — Portfolio</title>
+  <title>Puskar Kumar Thakur — Portfolio Card</title>
   <meta name="description" content="Portfolio of Puskar Kumar Thakur — skills, certificates, and projects." />
   <link rel="icon" href="./assests/logo.png" type="image/png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -185,10 +185,10 @@
     }
 
     .hero p {
-      color: var(--text-muted);
+      color: var(-crimson);
       max-width: 52ch;
       margin-top: 14px;
-      font-size: 1.02rem;
+      font-size: .85rem;
       line-height: 1.6;
     }
 
@@ -410,6 +410,93 @@
       color: var(--gold);
     }
 
+    .timeline {
+      position: relative;
+      margin-top: 28px;
+      padding-left: 0;
+    }
+
+    .tl-item {
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      gap: 16px;
+      padding: 22px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .tl-item:first-child {
+      border-top: none;
+      padding-top: 0;
+    }
+
+    .tl-logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'IBM Plex Mono', monospace;
+      font-weight: 600;
+      font-size: .85rem;
+      color: #fff;
+      background: linear-gradient(135deg, var(--crimson), var(--gold));
+    }
+
+    .tl-role {
+      font-family: 'Fraunces', serif;
+      font-weight: 700;
+      font-size: 1.08rem;
+    }
+
+    .tl-org {
+      font-size: .88rem;
+      color: var(--text);
+      margin-top: 2px;
+    }
+
+    .tl-org .type {
+      color: var(--text-muted);
+    }
+
+    .tl-meta {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .72rem;
+      color: var(--text-muted);
+      margin-top: 6px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px 10px;
+    }
+
+    .tl-meta span {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .tl-meta i {
+      color: var(--gold);
+      font-size: .68rem;
+    }
+
+    .tl-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .tl-tags span {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .68rem;
+      color: var(--gold);
+      border: 1px solid var(--border);
+      padding: 3px 10px;
+      border-radius: 999px;
+    }
+
     .contact-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -593,6 +680,7 @@
         <a href="#skills">Skills</a>
         <a href="#achievements">Achievements</a>
         <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
         <a href="#contact">Contact</a>
       </nav>
       <div class="nav-actions">
@@ -606,10 +694,12 @@
   <main class="wrap">
     <section class="hero" id="about" style="border-top:none;">
       <div>
-        <p class="eyebrow">Portfolio</p>
+        <p class="eyebrow">Who I am</p>
         <h1>Hi, I'm Puskar Kumar Thakur.</h1>
-        <p>I'm a student with a passion for IT — exploring new technologies and building projects that make a small dent
-          in the world, one commit at a time.</p>
+        <p>I’m a BIT student at Tribhuvan University (Batch 2081) and a passionate Frontend Developer focused on UI/UX
+          and Mobile App Development. I love turning ideas into responsive, user-friendly digital experiences using
+          modern web and app technologies. I’m always learning, building, and exploring new ways to create meaningful
+          tech solutions for students and communities.</p>
         <div class="hero-meta" style="margin-top:22px;">
           <span><i class="fa-solid fa-location-dot"></i>Dharan, Sunsari, Koshi Province, Nepal</span>
           <span><i class="fa-solid fa-graduation-cap"></i> IT Student</span>
@@ -644,6 +734,10 @@
         <a class="skill" href="certificate/Flutter A Hands on Workshop on Mobile App Development.jpg" target="_blank"
           rel="noopener">
           <i class="fa-brands fa-dart-lang"></i><span>Dart</span>
+        </a>
+        <a class="skill" href="certificate/Flutter A Hands on Workshop on Mobile App Development.jpg" target="_blank"
+          rel="noopener">
+          <i class="fa-brands fa-flutter"></i></i><span>Flutter</span>
         </a>
         <a class="skill" href="https://tailwindcss.com" target="_blank" rel="noopener">
           <i class="fa-solid fa-wind"></i><span>Tailwind CSS</span>
@@ -702,7 +796,7 @@
         <article class="proj-card" data-cat="web" onclick="openProject(this)"
           data-img="./assests/Project screenshot/bit batch 2081.png" data-title="BIT Batch 2081 Website"
           data-desc="Inspired by a tutorial, customized with my own enhancements."
-          data-git="https://github.com/thakurpuskar/BIT-Batch-2081" data-live="https://bit-batch-2081.vercel.app/">
+          data-git="https://github.com/thakurpuskar/bit2081batchwebsite" data-live="https://bit2081batch.vercel.app/">
           <img src="./assests/Project screenshot/bit batch 2081.png" alt="BIT Batch 2081 website screenshot" />
           <div class="proj-body">
             <h4>BIT Batch 2081 Website</h4>
@@ -721,6 +815,51 @@
             <span class="proj-tag">Mobile</span>
           </div>
         </article>
+      </div>
+    </section>
+    <section id="experience">
+      <p class="eyebrow">Where I've been</p>
+      <h2>Experience</h2>
+      <div class="timeline">
+
+        <div class="tl-item">
+          <div class="tl-logo">FR</div>
+          <div>
+            <div class="tl-role">Human Resources Manager</div>
+            <p class="tl-org">Fifteen Roots · <span class="type">Full-time</span></p>
+            <div class="tl-meta">
+              <span><i class="fa-solid fa-calendar"></i> Sep 2026 – Present · 1 mo</span>
+              <span><i class="fa-solid fa-location-dot"></i> Kosi Zone, Nepal · On-site</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-logo">LC</div>
+          <div>
+            <div class="tl-role">Vice President</div>
+            <p class="tl-org">Leo Club of Dharan Vijayapur · <span class="type">Part-time</span></p>
+            <div class="tl-meta">
+              <span><i class="fa-solid fa-calendar"></i> Jul 2026 – Present · 3 mos</span>
+              <span><i class="fa-solid fa-location-dot"></i> Dharan, Kosi Zone, Nepal · Hybrid</span>
+            </div>
+            <div class="tl-tags"><span>Leadership</span><span>Team Leadership</span></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-logo">ITA</div>
+          <div>
+            <div class="tl-role">Executive Committee Member</div>
+            <p class="tl-org">Information Technology Alliance – ITA · <span class="type">Full-time</span></p>
+            <div class="tl-meta">
+              <span><i class="fa-solid fa-calendar"></i> Apr 2025 – Present · 1 yr 6 mos</span>
+              <span><i class="fa-solid fa-location-dot"></i> Dharan, Kosi Zone, Nepal · On-site</span>
+            </div>
+            <div class="tl-tags"><span>Team Leadership</span><span>Leadership</span></div>
+          </div>
+        </div>
+
       </div>
     </section>
     <section id="contact">

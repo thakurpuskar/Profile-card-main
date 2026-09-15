@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Puskar Kumar Thakur — Web Developer</title>
+  <title>Puskar Kumar Thakur — Portfolio Card</title>
   <meta name="description"
     content="Puskar Kumar Thakur, web developer and IT student from Nepal. Building responsive, user-friendly digital experiences." />
   <link rel="icon" href="./assests/logo.png" type="image/png">
@@ -453,7 +453,7 @@
       <button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
       <img src="./assests/profile.jpg" alt="Puskar Kumar Thakur" />
       <h2 id="modalName">Puskar Kumar Thakur</h2>
-      <p class="role">Web Developer · UI Designer · Tech Enthusiast · Human Resource Manager</p>
+      <p class="role">Web Developer · UI/UX Designer · Tech Enthusiast · Human Resource Manager . Vice President</p>
       <p class="desc">Based in Nepal. I build responsive websites and enjoy turning ideas into user-friendly digital
         experiences.</p>
     </div>
@@ -547,7 +547,7 @@
     }
     const lines = [
       { prompt: 'who am i', out: 'Puskar Kumar Thakur' },
-      { prompt: 'role current', out: 'Human Resource Manager at Fifteen Roots' },
+      { prompt: 'role current', out: 'Human Resource Manager at Fifteen Roots and IT student' },
       { prompt: 'location', out: 'Dharan, Sunsari, Koshi Province, Nepal 🇳🇵' },
       { prompt: 'status', out: 'Open to internships & collaborations' }
     ];
@@ -579,7 +579,7 @@
         await new Promise(r => setTimeout(r, 260));
       }
     }
-    const roles = ["Web Developer", "UI Designer", "Tech Enthusiast", "Human Resource Manager"];
+    const roles = ["Web Developer", "UI Designer", "Tech Enthusiast", "Human Resource Manager", "Vice President"];
     const roleLine = document.getElementById('roleLine');
     let ri = 0, ci = 0, deleting = false;
     function roleTick() {
