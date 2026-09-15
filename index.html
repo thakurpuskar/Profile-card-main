@@ -453,7 +453,7 @@
       <button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
       <img src="./assests/profile.jpg" alt="Puskar Kumar Thakur" />
       <h2 id="modalName">Puskar Kumar Thakur</h2>
-      <p class="role">Web Developer · UI Designer · Tech Enthusiast</p>
+      <p class="role">Web Developer · UI Designer · Tech Enthusiast · Human Resource Manager</p>
       <p class="desc">Based in Nepal. I build responsive websites and enjoy turning ideas into user-friendly digital
         experiences.</p>
     </div>
@@ -489,7 +489,7 @@
         <div class="term">
           <div class="term-bar">
             <span class="term-dot r"></span><span class="term-dot y"></span><span class="term-dot g"></span>
-            <span class="term-title">puskar@portfolio ~ %</span>
+            <span class="term-title">thakur@portfolio</span>
           </div>
           <div class="term-body" id="termBody"></div>
         </div>
@@ -546,9 +546,9 @@
       requestAnimationFrame(tick);
     }
     const lines = [
-      { prompt: 'whoami', out: 'Puskar Kumar Thakur' },
-      { prompt: 'role --current', out: 'Web Developer, UI Designer, Tech Enthusiast' },
-      { prompt: 'location', out: 'Nepal 🇳🇵' },
+      { prompt: 'who am i', out: 'Puskar Kumar Thakur' },
+      { prompt: 'role current', out: 'Human Resource Manager at Fifteen Roots' },
+      { prompt: 'location', out: 'Dharan, Sunsari, Koshi Province, Nepal 🇳🇵' },
       { prompt: 'status', out: 'Open to internships & collaborations' }
     ];
     const termBody = document.getElementById('termBody');
@@ -579,7 +579,7 @@
         await new Promise(r => setTimeout(r, 260));
       }
     }
-    const roles = ["Web Developer", "UI Designer", "Tech Enthusiast"];
+    const roles = ["Web Developer", "UI Designer", "Tech Enthusiast", "Human Resource Manager"];
     const roleLine = document.getElementById('roleLine');
     let ri = 0, ci = 0, deleting = false;
     function roleTick() {
@@ -592,8 +592,8 @@
       else { deleting = false; ri = (ri + 1) % roles.length; setTimeout(roleTick, 250); }
     }
     window.addEventListener('DOMContentLoaded', () => {
-      animateCounter('c1', 29);
-      animateCounter('c2', 951);
+      animateCounter('c1', 32);
+      animateCounter('c2', 1200);
       animateCounter('c3', 530);
       runTerminal();
       roleTick();
