@@ -434,14 +434,16 @@
       height: 44px;
       border-radius: 10px;
       flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'IBM Plex Mono', monospace;
-      font-weight: 600;
-      font-size: .85rem;
-      color: #fff;
-      background: linear-gradient(135deg, var(--crimson), var(--gold));
+      overflow: hidden;
+      background: var(--surface);
+      border: 1px solid var(--border);
+    }
+
+    .tl-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
     .tl-role {
@@ -823,19 +825,19 @@
       <div class="timeline">
 
         <div class="tl-item">
-          <div class="tl-logo">FR</div>
+          <div class="tl-logo"><img src="./assests/fifteen root.jpg" alt="Fifteen Roots logo" /></div>
           <div>
             <div class="tl-role">Human Resources Manager</div>
             <p class="tl-org">Fifteen Roots · <span class="type">Full-time</span></p>
             <div class="tl-meta">
               <span><i class="fa-solid fa-calendar"></i> Sep 2026 – Present · 1 mo</span>
-              <span><i class="fa-solid fa-location-dot"></i> Kosi Zone, Nepal · On-site</span>
+              <span><i class="fa-solid fa-location-dot"></i>Dharan, Kosi Zone, Nepal · On-site</span>
             </div>
           </div>
         </div>
 
         <div class="tl-item">
-          <div class="tl-logo">LC</div>
+          <div class="tl-logo"><img src="./assests/lcdv.png" alt="Leo Club of Dharan Vijayapur logo" /></div>
           <div>
             <div class="tl-role">Vice President</div>
             <p class="tl-org">Leo Club of Dharan Vijayapur · <span class="type">Part-time</span></p>
@@ -843,12 +845,11 @@
               <span><i class="fa-solid fa-calendar"></i> Jul 2026 – Present · 3 mos</span>
               <span><i class="fa-solid fa-location-dot"></i> Dharan, Kosi Zone, Nepal · Hybrid</span>
             </div>
-            <div class="tl-tags"><span>Leadership</span><span>Team Leadership</span></div>
           </div>
         </div>
 
         <div class="tl-item">
-          <div class="tl-logo">ITA</div>
+          <div class="tl-logo"><img src="./assests/ita.jpg" alt="Information Technology Alliance logo" /></div>
           <div>
             <div class="tl-role">Executive Committee Member</div>
             <p class="tl-org">Information Technology Alliance – ITA · <span class="type">Full-time</span></p>
@@ -856,7 +857,6 @@
               <span><i class="fa-solid fa-calendar"></i> Apr 2025 – Present · 1 yr 6 mos</span>
               <span><i class="fa-solid fa-location-dot"></i> Dharan, Kosi Zone, Nepal · On-site</span>
             </div>
-            <div class="tl-tags"><span>Team Leadership</span><span>Leadership</span></div>
           </div>
         </div>
 
